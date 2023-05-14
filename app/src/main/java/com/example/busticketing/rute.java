@@ -46,7 +46,7 @@ public class rute extends AppCompatActivity {
                         String arrival = respObj.getString("arrival");
                         String time_depature = respObj.getString("time_depature");
                         String price = respObj.getString("price");
-                        ruteModels.add(depature, arrival, time_depature, price);
+//                        ruteModels.add(depature, arrival, time_depature, price);
                     }
                 }
                 catch (JSONException e){

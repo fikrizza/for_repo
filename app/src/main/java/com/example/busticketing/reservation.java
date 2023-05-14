@@ -35,7 +35,7 @@ public class reservation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        EditText inputdate = (EditText) findViewById(R.id.##);
+        EditText inputdate = (EditText) findViewById(R.id.input_reservation);
     }
 
     protected String generateCode(){
@@ -52,28 +52,28 @@ public class reservation extends AppCompatActivity {
         return randomStringBuilder.toString();
     }
 
-    protected String currentSession(){
-        String sessionId = null;
-        dbHelper = new DataHelper(this);
-
-        SQLiteDatabase read = dbHelper.getReadableDatabase();
-
-        Cursor cursor = read.rawQuery("SELECT * FROM sesi",null);
-        cursor.moveToFirst();
-
-        if (cursor.getCount() > 0 && cursor.getCount() <= 1) {
-            sessionId = cursor.getString(cursor.getColumnIndex("idUser"));
-            Log.d("reservation.java", "id  : "+cursor.getString(cursor.getColumnIndex("idUser")));
-        }
-        else{
-            Intent intent = new Intent(this, login.class);
-            startActivity(intent);
-            finish();
-        }
-        cursor.close();
-
-        return sessionId;
-    }
+//    protected String currentSession(){
+//        String sessionId = null;
+//        dbHelper = new DataHelper(this);
+//
+//        SQLiteDatabase read = dbHelper.getReadableDatabase();
+//
+//        Cursor cursor = read.rawQuery("SELECT * FROM sesi",null);
+//        cursor.moveToFirst();
+//
+//        if (cursor.getCount() > 0 && cursor.getCount() <= 1) {
+//            sessionId = cursor.getString(cursor.getColumnIndex("idUser"));
+//            Log.d("reservation.java", "id  : "+cursor.getString(cursor.getColumnIndex("idUser")));
+//        }
+//        else{
+//            Intent intent = new Intent(this, login.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//        cursor.close();
+//
+//        return sessionId;
+//    }
 
     protected String getIdRute(){
         String idRute;
@@ -129,7 +129,7 @@ public class reservation extends AppCompatActivity {
 
                 params.put("date", dateFormat(date));
                 params.put("bookCode", generateCode());
-                params.put("id_account", currentSession());
+//                params.put("id_account", currentSession());
                 params.put("id_rute", getIdRute());
                 Log.d("reservation.java", "getParams: " + params);
                 return params;
